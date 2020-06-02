@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <link rel="stylesheet" href="node_modules/xterm/css/xterm.css" />
+  <link rel="stylesheet" href="index.css" />
+  <!--
+      -->
+  <script src="node_modules/xterm/lib/xterm.js"></script>
+  <script src="node_modules/xterm-addon-fit/lib/xterm-addon-fit.js"></script>
+</head>
+
+<body>
+  <div id="toolbar">
+    <input id="save" class="stop" type="button"></input>
+  </div>
+  <div id="terminal"></div>
+  <script>
+    var term = new Terminal({
+      fontSize: 14,
+      convertEol: true,
+      theme: {
+    }
+    });
+    var fitAddon = new FitAddon.FitAddon();
+    term.loadAddon(fitAddon);
+    var element = document.getElementById('terminal');
+    term.open(element);
+    fitAddon.fit();
+    window.onload = function() {
+      fitAddon.fit();
+      console.log(JSON.stringify({ cols: term.cols, rows: term.rows }));
+    }
+    window.onresize = function () {
+      fitAddon.fit();
+      console.log(JSON.stringify({ cols: term.cols, rows: term.rows }));
+    }
+    term.write('           ╔═════════════════════════════════════════════════════════╕\n');
+    for(var i = 1; i < 300; ++i) {
+    term.write('           ║                                                      '+("000" + i).slice(-3)+'│\n');
+    }
+    term.write('END\n');
+  </script>
+</body>
+
+</html>
