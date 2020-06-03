@@ -1,43 +1,38 @@
 html,
 body {
-  background-color: #fff;
   height: 100%;
   margin: 0;
-  overflow: hidden; 
 }
-html #terminal,
-body #terminal {
-    display: flex;
+#fullscreen {
     height: 100%;
-    position: relative;
-    width: 100%; 
-}
-html #toolbar,
-body #toolbar {
     display: flex;
-    align-items: center; 
-}
-html #toolbar a,
-body #toolbar a {
+    flex-direction: column;
+ }
+ #toolbar {
+    flex-basis: auto;
+ }
+ #terminal {
+    flex: 1;
+ }
+
+#toolbar a {
       padding-left: 1em; 
 }
-html #save,
-body #save {
+
+#save {
     width: 32px;
     height: 32px;
     border: none;
     outline: none;
     cursor: pointer; 
 }
-html .stop,
-body .stop {
+.stop {
     filter: grayscale(100%);
     background: url(save.png) no-repeat;
     background-size: contain; 
 }
 
-html .start,
-body .start {
+.start {
     background: url(save.png);
     background-size: contain; 
 }
